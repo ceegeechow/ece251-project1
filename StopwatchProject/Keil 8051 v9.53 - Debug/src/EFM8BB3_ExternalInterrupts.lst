@@ -1,0 +1,60 @@
+C51 COMPILER V9.53.0.0   EFM8BB3_EXTERNALINTERRUPTS                                        04/18/2017 18:22:22 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE EFM8BB3_EXTERNALINTERRUPTS
+OBJECT MODULE PLACED IN .\src/EFM8BB3_ExternalInterrupts.OBJ
+COMPILER INVOKED BY: Z:\Applications\Simplicity Studio.app\Contents\Eclipse\developer\toolchains\keil_8051\9.53\BIN\C51.
+                    -exe /Users/camille/SimplicityStudio/v4_workspace/EFM8BB3_ExternalInterrupts_2/src/EFM8BB3_ExternalInterrupts.c OMF2 SMAL
+                    -L DEBUG OBJECTEXTEND ROM(LARGE) WARNINGLEVEL(2) FLOATFUZZY(3) OPTIMIZE(8,SPEED) DEFINE(DEBUG=1) INTVECTOR(0X0000) INTPRO
+                    -MOTE INCDIR(/Users/camille/SimplicityStudio/v4_workspace/EFM8BB3_ExternalInterrupts_2/inc;/Applications/Simplicity Studi
+                    -o.app/Contents/Eclipse/developer/sdks/8051/v4.0.3//Device/shared/si8051base;/Applications/Simplicity Studio.app/Contents
+                    -/Eclipse/developer/sdks/8051/v4.0.3//Device/EFM8BB3/inc) PRINT(.\src/EFM8BB3_ExternalInterrupts.lst) COND PAGEWIDTH(120)
+                    - PAGELENGTH(65) OBJECT(.\src/EFM8BB3_ExternalInterrupts.OBJ)
+
+line level    source
+
+   1          //-----------------------------------------------------------------------------
+   2          // Include Files
+   3          //-----------------------------------------------------------------------------
+   4          #include <SI_EFM8BB3_Register_Enums.h>
+   5          #include "InitDevice.h"
+   6          
+   7          //-----------------------------------------------------------------------------
+   8          // Pin Definitions
+   9          //-----------------------------------------------------------------------------
+  10          SI_SBIT (DISP_EN, SFR_P3, 4);          // Display Enable
+  11          #define DISP_BC_DRIVEN   0             // 0 = Board Controller drives display
+  12          #define DISP_EFM8_DRIVEN 1             // 1 = EFM8 drives display
+  13          
+  14          //-----------------------------------------------------------------------------
+  15          // Main Routine
+  16          //-----------------------------------------------------------------------------
+  17          void main (void)
+  18          {
+  19   1         enter_DefaultMode_from_RESET();
+  20   1      
+  21   1         DISP_EN = DISP_BC_DRIVEN;           // EFM8 does not drive display
+  22   1      
+  23   1         IE_EA = 1;
+  24   1      
+  25   1         while(1);                           // Infinite while loop waiting for
+  26   1                                             // an interrupt from /INT0 or /INT1
+  27   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      9    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
