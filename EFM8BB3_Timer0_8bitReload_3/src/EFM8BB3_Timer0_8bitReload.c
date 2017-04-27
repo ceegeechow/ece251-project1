@@ -14,13 +14,6 @@ SI_SBIT (S2, SFR_P0, 3);
 #define DISP_BC_DRIVEN   0             // 0 = Board Controller drives display
 #define DISP_EFM8_DRIVEN 1             // 1 = EFM8 drives display
 
-//-----------------------------------------------------------------------------
-// Globals
-//-----------------------------------------------------------------------------
-uint16_t totalTime = 0;
-bool timerOn = false;
-uint16_t lapTimes[100];
-uint16_t lap = 0;
 
 //-----------------------------------------------------------------------------
 // Main Routine
@@ -35,14 +28,14 @@ void main (void)
 
    while (1) {
 	      // Wait for both switches to be released before re-enabling external interrupts
-	      if ((S1 == 0) || (S2 == 0))
-	      {
-	         IE_EX0 = 0;
-	         IE_EX1 = 0;
-	      }
-	      else {
-	    	  IE_EX0 = 1;
-	    	  IE_EX1 = 1;
-	      }
+//	      if ((S1 == 0) || (S2 == 0))
+//	      {
+//	         IE_EX0 = 0;
+//	         IE_EX1 = 0;
+//	      }
+//	      else {
+//	    	  IE_EX0 = 1;
+//	    	  IE_EX1 = 1;
+//	      }
    }
 }
